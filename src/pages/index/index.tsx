@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-indent-props */
 import { Component } from 'react'
 import { Flex, Text } from 'antd-mobile'
+import Taro from '@tarojs/taro'
 import { Image } from '@tarojs/components'
 
 import homeIcon from '../../images/home.png'
@@ -64,7 +65,17 @@ export default class Index extends Component {
 						<Flex
 							className={styles.tabbarItem}
 							key={item.key}
-							onClick={() => this.setState({ activeKey: item.key })}
+							onClick={() => {
+								Taro.getUserProfile(
+									{
+										desc: '拿来吧你',
+										success: res => {
+											console.log(res)
+										}
+									}
+								)
+								this.setState({ activeKey: item.key })
+							}}
 							direction='column'
 						>
 							<Image
