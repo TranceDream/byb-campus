@@ -10,7 +10,11 @@ import favoriteButton from '../images/favorite.png'
 import styles from './post-card.module.sass'
 import IconButton from './icon-button'
 
-export default function PostCard(): JSX.Element {
+interface PostCardProps {
+	overview: boolean
+}
+
+export default function PostCard(props: PostCardProps): JSX.Element {
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.info}>
@@ -20,8 +24,7 @@ export default function PostCard(): JSX.Element {
 					<Text className={styles.time}>2021年10月32日</Text>
 				</div>
 			</div>
-			<Text className={styles.title}>标题测试</Text>
-			<Text className={styles.content}>
+			<Text className={styles.content} style={props.overview ? {} : {}}>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed interdum bibendum eros
 				non pellentesque. Mauris ac nisi ut elit rutrum malesuada non sed lorem. Ut eu nisl
 				et mauris facilisis vestibulum. Praesent a fringilla nisi, in ultrices erat.

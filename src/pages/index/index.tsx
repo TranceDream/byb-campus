@@ -66,14 +66,14 @@ export default class Index extends Component {
 							className={styles.tabbarItem}
 							key={item.key}
 							onClick={() => {
-								Taro.getUserProfile(
-									{
+								if (item.key == 'profile') {
+									Taro.getUserProfile({
 										desc: '拿来吧你',
 										success: res => {
 											console.log(res)
-										}
-									}
-								)
+										},
+									})
+								}
 								this.setState({ activeKey: item.key })
 							}}
 							direction='column'
