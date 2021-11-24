@@ -9,6 +9,7 @@ class App extends Component {
 			success: res => {
 				if (res.code) {
 					// 发起网络请求
+					Taro.setStorage({key: 'code', data: res.code})
 					console.log(res.code)
 				} else {
 					console.log('登录失败！' + res.errMsg)

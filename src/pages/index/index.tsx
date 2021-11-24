@@ -57,6 +57,15 @@ export default class Index extends Component {
 	}
 
 	render() {
+		Taro.getStorage({
+			key: 'openId',
+			success: res => {
+				console.log(res.data)
+			},
+			fail: _ => {
+				Taro.redirectTo({ url: '/pages/login/login' })
+			},
+		})
 		return (
 			<div className={styles.wrapper}>
 				<div className={styles.content}>{this.content()}</div>

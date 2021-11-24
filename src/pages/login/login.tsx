@@ -1,17 +1,52 @@
 import Taro from '@tarojs/taro'
 import { Image } from '@tarojs/components'
-import React, { Component } from 'react'
-import { Flex, Text, Button } from 'antd-mobile'
+import { Component } from 'react'
+import { Text, Button } from 'antd-mobile'
+
 import loginIcon from '../../images/login.png'
 import styles from './login.module.sass'
+import fetch from '../../utils/request'
 
 export default class Login extends Component {
-	login = e => {
-		console.log('temp to login')
-		Taro.getUserProfile({
-			desc: '拿来吧你',
+	constructor(props) {
+		super(props)
+		this.state = {
+			code: undefined,
+		}
+	}
+
+	login = () => {
+		Taro.getStorage({
+			key: 'code',
 			success: res => {
-				console.log(res)
+				fetch('/user/login.action', {
+					method: 'POST',
+					data: { code: res.data },
+					success: val => {
+						if (val.data.status == 'User_Not_Exist') {
+							Taro.getUserProfile({
+								desc: 'getUserProfile',
+								success: res => {
+									let info = {
+										username: res.userInfo.nickName,
+										nickname: res.userInfo.nickName,
+										openid: val.data.openid,
+									}
+									fetch('/user/register.action', {
+										method: 'POST',
+										data: JSON.stringify({ user: info }),
+										success: result => {
+											console.log(result)
+										},
+									})
+								},
+							})
+						}
+					},
+					fail: err => {
+						console.error('登录失败\t' + err)
+					},
+				})
 			},
 		})
 	}
