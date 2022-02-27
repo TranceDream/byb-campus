@@ -1,0 +1,82 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	padding: 32rpx 32rpx 0;
+	margin: 0 0 16rpx 0;
+	overflow: hidden;
+	background-color: white;
+}
+
+.userinfo {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	overflow: hidden;
+
+	.avatar {
+		object-fit: cover;
+		border-radius: 9999rpx;
+		width: 64rpx;
+		min-width: 64rpx;
+		height: 64rpx;
+		min-height: 64rpx;
+		margin-right: 16rpx;
+	}
+
+	.username {
+		display: inline-block;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+}
+
+.content {
+	overflow: hidden;
+	display: -webkit-box;
+	margin-top: 16rpx;
+	margin-left: 64rpx;
+	font-size: large;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+}
+
+.imagegroup {
+	display: flex;
+	flex-direction: row;
+	margin-left: 64rpx;
+	.image {
+		margin-top: 16rpx;
+		width: 33%;
+		padding: 33% 0 0 0;
+		background-position: center;
+		background-size: cover;
+	}
+}
+
+.buttongroup {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin-top: 16rpx;
+	padding: 8rpx 0;
+	border-top: 1rpx solid lightgray;
+}
+
+.button {
+	flex: 1;
+	height: 64rpx;
+	display: flex;
+	justify-content:center;
+	align-items: center;
+	font-size: small;
+	.label {
+		margin-left: 16rpx;
+		margin-bottom: 2rpx;
+	}
+	&:active {
+		background-color: #f0f0f0;
+	}
+}

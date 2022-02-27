@@ -1,0 +1,74 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.background {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	background: url('../../images/bg.jpg');
+	background-size: cover;
+	background-position: center;
+	padding: 64rpx;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.avatar {
+	width: 192rpx;
+	min-width: 192rpx;
+	height: 192rpx;
+	min-height: 192rpx;
+	border-radius: 9999rpx;
+}
+
+.userinfo {
+	display: flex;
+	flex-direction: column;
+	height: 192rpx;
+	justify-content: space-evenly;
+	margin-left: 24rpx;
+	overflow: hidden;
+}
+
+.username {
+	display: -webkit-box;
+	font-size: x-large;
+	color: white;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+}
+
+.bio {
+	display: -webkit-box;
+	color: white;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+}
+
+.item {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 32rpx 64rpx;
+	font-size: large;
+	border-bottom: 1px solid lightgray;
+	overflow: hidden;
+
+	.label {
+		margin: 0 32rpx;
+		flex: 1;
+	}
+	.icon {
+		width: 48rpx;
+	}
+}
